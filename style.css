@@ -25,7 +25,6 @@ body {
     justify-content: space-around;
     cursor: default;
     position: relative;
-    background: radial-gradient(circle at 50% 0, orange 45%, #f6f8ff 36%);
     width: 100%;
     min-height: 30em;
     padding: 30px 20px;
@@ -61,6 +60,13 @@ body {
     display: flex;
     justify-content: space-around;
     margin: 20px 0 40px 0;
+}
+
+.types span {
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.799) 1px 0 3px;
 }
 
 span {
