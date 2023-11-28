@@ -1,28 +1,29 @@
 const typeColor = {
-  bug: "#26de81",
-  dragon: "#ffeaa7",
-  electric: "#fed330",
-  fairy: "#FF0069",
-  fighting: "#30336b",
+  bug: "#85c45a",
+  dragon: "#8854d1",
+  electric: "#f0c730",
+  fairy: "#f74d93",
+  fighting: "#cc843b",
   fire: "#f0932b",
-  flying: "#81ecec",
-  grass: "#00b894",
+  flying: "#74b9ff",
+  grass: "#17bd4b",
   ground: "#EFB549",
-  ghost: "#a55eea",
-  ice: "#74b9ff",
+  ghost: "#9f73c9",
+  ice: "#81ecec",
   normal: "#95afc0",
-  poison: "#6c5ce7",
-  psychic: "#a29bfe",
-  rock: "#2d3436",
+  poison: "#9639cc",
+  psychic: "#e06cd3",
+  rock: "#947344",
   water: "#0190FF",
-  steel: "#eff3ff"
+  steel: "#b3b6be",
+  dark: "#3b3b3b"
 };
 const url = 'https://pokeapi.co/api/v2/pokemon/';
 const card = document.getElementById('card');
 const btn = document.getElementById('btn');
 
 let getPokemon = () => {
-    let randomNum = Math.floor(Math.random() * 250) + 1; // Generate random Pokemon
+    let randomNum = Math.floor(Math.random() * 549) + 1; // Generate random Pokemon
     const result = url + randomNum; // Conbine API with randomNum
     fetch(result)
     .then((response) => response.json())
@@ -44,6 +45,8 @@ let generateCard = (data) => {
     if(data.types.length == 2){
         const typeTwo = data.types[1].type.name;
         document.querySelector('.types').innerHTML = `<span>${typeOne}</span><span>${typeTwo}</span>`;
+        const cardColorTwo = typeColor[data.types[1].type.name];
+        document.querySelector('.types span:nth-child(2)').style.backgroundColor = cardColorTwo;
     } else {
         document.querySelector('.types').innerHTML = `<span>${typeOne}</span>`;
     }
@@ -59,9 +62,7 @@ let generateCard = (data) => {
 
 let styleCard = (color) => {
     card.style.background = `radial-gradient(circle at 50% 0, ${color} 45%, #f6f8ff 36%)`;
-    card.querySelectorAll('.types span').forEach((typeColor) => {
-        typeColor.style.backgroundColor = color;
-    })
+    document.querySelector('.types span:nth-child(1)').style.backgroundColor = color;
 };
 
 btn.addEventListener('click', getPokemon);
