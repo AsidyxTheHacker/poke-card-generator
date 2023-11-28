@@ -97,4 +97,9 @@ span {
     margin: 30px auto;
     border: none;
     border-radius: 5px;
+    transition: .2s;
+}
+
+#btn:hover {
+    font-size: 20px;
 }
